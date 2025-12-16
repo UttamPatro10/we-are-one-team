@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🎄 Secret Santa 2026 🎅</title>
+<style>
+body{margin:0;font-family:Segoe UI,sans-serif;background:linear-gradient(135deg,#1d2671,#c33764);color:#fff;text-align:center;overflow:hidden}
+.card{max-width:720px;margin:80px auto;background:rgba(255,255,255,.15);padding:45px;border-radius:22px;box-shadow:0 0 30px rgba(0,0,0,.4)}
+h1{font-size:40px}
+input{padding:14px;font-size:18px;border-radius:10px;border:none;width:70%;text-align:center}
+.btn{margin:20px auto;padding:16px 30px;font-size:20px;border:none;border-radius:50px;background:linear-gradient(90deg,#ff512f,#dd2476);color:white;cursor:pointer}
+.wave{font-size:44px;font-weight:bold;margin:30px 0;background:linear-gradient(90deg,#ffe259,#ffa751,#ffe259);-webkit-background-clip:text;color:transparent;animation:wave 2s infinite;display:none}
+@keyframes wave{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+.footer{margin-top:30px;font-size:20px;font-weight:bold;color:#ffdd59}
+.snowflake{position:fixed;top:-10px;color:white;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh)}}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="lock">
+  <h1>🔐 Enter Password</h1>
+  <input type="password" id="pwd" placeholder="Password">
+  <br>
+  <button class="btn" onclick="unlock()">Unlock 🎁</button>
+  <p id="err" style="color:#ffb3b3;display:none;">Wrong password</p>
+</div>
+
+<div class="card" id="main" style="display:none;">
+  <h1>🎄 Secret Santa 2026 🎅</h1>
+  <button class="btn" onclick="reveal()">🎁 Click to Reveal</button>
+  <div class="wave" id="name">Friend</div>
+  <div class="footer">Be the Santa for your friend 🎄</div>
+</div>
+
+<script>
+const PASSWORD="weareoneteam";
+const p=new URLSearchParams(location.search);
+document.getElementById("name").innerText=p.get("name")||"Friend";
+
+function unlock(){
+  if(pwd.value===PASSWORD){
+    lock.style.display="none";
+    main.style.display="block";
+  } else err.style.display="block";
+}
+
+function reveal(){
+  document.querySelector(".wave").style.display="block";
+}
+
+for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="snowflake";
+  s.innerHTML="❄";
+  s.style.left=Math.random()*100+"vw";
+  s.style.fontSize=(Math.random()*10+10)+"px";
+  s.style.animationDuration=(Math.random()*5+5)+"s";
+  document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>

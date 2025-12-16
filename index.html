@@ -37,7 +37,38 @@ input{padding:14px;font-size:18px;border-radius:10px;border:none;width:70%;text-
 <script>
 const PASSWORD="weareoneteam";
 const p=new URLSearchParams(location.search);
-document.getElementById("name").innerText=p.get("name")||"Friend";
+<script>
+const PASSWORD = "weareoneteam";
+
+/* 🔐 RANDOM TOKEN → NAME MAP */
+const tokenMap = {
+  "9fK7Q2xM": "Ajinkya",
+  "R8vP1ZtA": "Nikita",
+  "H4mC0Wq9": "Uttam"
+  // add remaining people here
+};
+
+const params = new URLSearchParams(window.location.search);
+const token = params.get("code");
+
+/* Default safe value */
+const displayName = tokenMap[token] || "Friend";
+document.getElementById("name").innerText = displayName;
+
+function unlock(){
+  if (pwd.value === PASSWORD) {
+    lock.style.display = "none";
+    main.style.display = "block";
+  } else {
+    err.style.display = "block";
+  }
+}
+
+function reveal(){
+  document.querySelector(".wave").style.display = "block";
+}
+</script>
+
 
 function unlock(){
   if(pwd.value===PASSWORD){

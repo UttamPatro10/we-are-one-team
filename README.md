@@ -1,1 +1,3 @@
-# we-are-one-team
+we-are-one-team
+ ├── index.html
+ └── README.md
